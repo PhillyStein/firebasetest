@@ -63,7 +63,8 @@ if (logOutButton != null) {
 
 auth.onAuthStateChanged(function(user)
     {
-        if(user)
+        var path = window.location.pathname;
+        if(user && path == "/index.html")
         {
             window.location.href = "home.html";
         }
