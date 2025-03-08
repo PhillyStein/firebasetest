@@ -37,14 +37,14 @@
 <script type="module" src="firebase.js"></script>
 
 <h1>This is a Heading</h1>
-<p>the first bird is <span id="birdName"></span>.</p>
+<p id="errorMessageP"><p>
 
 <form>
     <label for="email">Email:</label><br>
     <input type="text" id="email" name="email"><br>
     <label for="password">Password:</label><br>
     <input type="password" id="password" name="password">
-    <button id="signInButton" type="button">
+    <button id="btn-login" type="button" onclick="signIn()">
         Login
     </button>
 </form>
