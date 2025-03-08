@@ -17,7 +17,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 const auth = getAuth();
-firebase.auth.Auth.Persistence.LOCAL;
+auth.Auth.Persistence.LOCAL;
 
 async function getBirds(db) {
     console.log("1")
