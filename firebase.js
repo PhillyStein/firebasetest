@@ -24,4 +24,15 @@ async function getBirds(db) {
     const birdList = birdsSnapshot.docs.map(doc => doc.data());
     document.getElementById('birdName').innerHTML = birdList[0]["bird_name"];
 }
+
+async function signIn() {
+    var email = document.getElementById("email");
+    var password = document.getElementById("password");
+    if(email != "" && password != "")
+    {
+        var result = firebase.auth().signInWithEmailAndPassword(email, password);
+
+    }
+}
+
 getBirds(db)
