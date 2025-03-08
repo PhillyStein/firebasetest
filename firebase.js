@@ -39,7 +39,7 @@ if (signInButton != null) {
         var password = document.getElementById("password").value;
         if(email != "" && password != "")
         {
-            var result = signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
+            var result = createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
                 const user = userCredential.user;
                 window.location.href = "home.html";
             }).catch((error) => {
@@ -49,6 +49,11 @@ if (signInButton != null) {
             });
         }
     }
+}
+
+var signUpButton = document.getElementById("signUpButton");
+if (signUpButton != null) {
+
 }
 
 var logOutButton = document.getElementById("logOutButton");

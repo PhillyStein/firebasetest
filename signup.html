@@ -2,12 +2,12 @@
 <html>
 <head>
 
-<title>Log In</title>
+<title>Firebase</title>
 </head>
 <body>
 <script type="module" src="firebase.js"></script>
 
-<h1>Log In</h1>
+<h1>Sign Up</h1>
 <p id="errorMessageP"><p>
 
 <form>
@@ -15,20 +15,21 @@
     <input type="text" id="email" name="email"><br>
     <label for="password">Password:</label><br>
     <input type="password" id="password" name="password">
-    <button id="signInButton" type="button">
-        Login
+    <button id="signUpButton" type="button">
+        Sign Up
     </button>
 </form>
 <br>
 <br>
 <br>
 <br>
-<button type="button" onclick="signUp()">Create New Account</button>
+<button type="button" onclick="logIn()">Log In</button>
 
 <script>
-    function signUp() {
-        window.location.href = "signup.html";
+    function logIn() {
+        window.location.href = "index.html";
     }
 </script>
+
 </body>
 </html>
