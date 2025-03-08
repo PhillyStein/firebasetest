@@ -30,30 +30,32 @@ async function getBirds(db) {
 }
 
 var signInButton = document.getElementById("signInButton");
-
-signInButton.onclick = async function() {
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
-    if(email != "" && password != "")
-    {
-        var result = signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
-            const user = userCredential.user;
-        }).catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            document.getElementById("errorMessageP").innerHTML = "Error " + errorCode + ": " + errorMessage;
-        });
+if (signInButton != null) {
+    signInButton.onclick = async function() {
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        if(email != "" && password != "")
+        {
+            var result = signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
+                const user = userCredential.user;
+            }).catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                document.getElementById("errorMessageP").innerHTML = "Error " + errorCode + ": " + errorMessage;
+            });
+        }
     }
 }
 
 var logOutButton = document.getElementById("logOutButton");
-
-logOutButton.onclick = async function() {
-    signOut(auth).then(()=> {
-        window.location.href = "index.html";
-    }).catch((error) => {
-        console.error("Error signing out: ", error);
-    });
+if (logOutButton != null) {
+    logOutButton.onclick = async function() {
+        signOut(auth).then(()=> {
+            window.location.href = "index.html";
+        }).catch((error) => {
+            console.error("Error signing out: ", error);
+        });
+    }
 }
 
 auth.onAuthStateChanged(function(user)
