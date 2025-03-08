@@ -13,6 +13,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+firebase.auth.Auth.Persistence.LOCAL;
 
 async function getBirds(db) {
     console.log("1")
@@ -34,5 +35,13 @@ async function signIn() {
 
     }
 }
+
+firebase.auth().onAuthStateChanged(function(user)
+    {
+        if(user)
+        {
+            window.location.href = "home.html";
+        }
+    })
 
 getBirds(db)
