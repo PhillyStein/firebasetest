@@ -32,8 +32,8 @@ async function getBirds(db) {
 var signInButton = document.getElementById("signInButton");
 
 signInButton.onclick = async function() {
-    var email = document.getElementById("email");
-    var password = document.getElementById("password");
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
     if(email != "" && password != "")
     {
         var result = signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
