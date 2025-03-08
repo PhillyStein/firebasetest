@@ -49,7 +49,15 @@
     </button>
 </form>
 
-
+<script>
+    firebase.auth().onAuthStateChanged(function(user)
+    {
+        if(user)
+        {
+            window.location.href = "home.html";
+        }
+    })
+</script>
 
 </body>
 </html>
