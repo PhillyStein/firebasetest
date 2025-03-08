@@ -2,6 +2,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.1/firebase
 import { getFirestore } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore.js";
 import { collection, getDocs, addDoc, Timestamp } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore.js";
 import { query, orderBy, limit, where, onSnapshot } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-auth.js";
+
 const firebaseConfig = {
     apiKey: "AIzaSyC23VjV2kevCjyJDA6RsdDmEyng5--UWsU",
     authDomain: "birdtown-19c4f.firebaseapp.com",
@@ -13,6 +15,8 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
+const auth = getAuth();
 firebase.auth.Auth.Persistence.LOCAL;
 
 async function getBirds(db) {
@@ -31,8 +35,12 @@ async function signIn() {
     var password = document.getElementById("password");
     if(email != "" && password != "")
     {
-        var result = firebase.auth().signInWithEmailAndPassword(email, password);
-
+        var result = signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
+            const user = userCredential.user;
+        }).catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+        });
     }
 }
 
