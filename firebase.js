@@ -44,7 +44,7 @@ async function signIn() {
     }
 }
 
-firebase.auth().onAuthStateChanged(function(user)
+auth.onAuthStateChanged(function(user)
     {
         if(user)
         {
