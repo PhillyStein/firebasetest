@@ -26,7 +26,10 @@ async function getBirds(db) {
     const birdsSnapshot = await getDocs(birdsCol);
     console.log("3")
     const birdList = birdsSnapshot.docs.map(doc => doc.data());
-    document.getElementById('birdName').innerHTML = birdList[0]["bird_name"];
+    var birdName = document.getElementById('birdName');
+    if (birdName != null) {
+        birdName.innerHTML = birdList[0]["bird_name"];
+    }
 }
 
 var signInButton = document.getElementById("signInButton");
@@ -66,4 +69,4 @@ auth.onAuthStateChanged(function(user)
         }
     })
 
-getBirds(db)
+//getBirds(db)
