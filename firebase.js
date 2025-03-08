@@ -40,7 +40,9 @@ signInButton.onclick = async function() {
             const user = userCredential.user;
         }).catch((error) => {
             const errorCode = error.code;
+            console.log(errorCode);
             const errorMessage = error.message;
+            console.log(errorMessage);
         });
     }
 }
