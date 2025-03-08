@@ -17,6 +17,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 const auth = getAuth();
+firebase.auth.Auth.Persistence.LOCAL;
 
 async function getBirds(db) {
     console.log("1")
@@ -29,7 +30,9 @@ async function getBirds(db) {
     document.getElementById('birdName').innerHTML = birdList[0]["bird_name"];
 }
 
-async function signIn() {
+var signInButton = document.getElementById("signInButton");
+
+signInButton.onclick = async function() {
     var email = document.getElementById("email");
     var password = document.getElementById("password");
     if(email != "" && password != "")
