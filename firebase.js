@@ -41,6 +41,7 @@ if (signInButton != null) {
         {
             var result = signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
                 const user = userCredential.user;
+                window.location.href = "home.html";
             }).catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
@@ -65,9 +66,9 @@ auth.onAuthStateChanged(function(user)
     {
         var path = window.location.pathname;
         console.log(path)
-        if(user && path == "/index.html")
+        if(user)
         {
-            window.location.href = "home.html";
+           //window.location.href = "home.html";
         }
     })
 
