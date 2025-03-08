@@ -39,7 +39,7 @@ if (signInButton != null) {
         var password = document.getElementById("password").value;
         if(email != "" && password != "")
         {
-            var result = createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
+            var result = signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
                 const user = userCredential.user;
                 window.location.href = "home.html";
             }).catch((error) => {
@@ -53,6 +53,21 @@ if (signInButton != null) {
 
 var signUpButton = document.getElementById("signUpButton");
 if (signUpButton != null) {
+    signUpButton.onclick = async function() {
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        if(email != "" && password != "")
+        {
+            var result = createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
+                const user = userCredential.user;
+                window.location.href = "home.html";
+            }).catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                document.getElementById("errorMessageP").innerHTML = "Error " + errorCode + ": " + errorMessage;
+            });
+        }
+    }
 
 }
 
