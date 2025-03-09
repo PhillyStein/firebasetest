@@ -18,17 +18,19 @@ const db = getFirestore(app);
 
 const auth = getAuth();
 
-async function getBirds(db) {
+async function getShopItems(db) {
     console.log("1")
-    const birdsCol = collection(db, 'birds');
-    console.log("2")
-    console.log(birdsCol)
-    const birdsSnapshot = await getDocs(birdsCol);
-    console.log("3")
-    const birdList = birdsSnapshot.docs.map(doc => doc.data());
-    var birdName = document.getElementById('birdName');
-    if (birdName != null) {
-        birdName.innerHTML = birdList[0]["bird_name"];
+    const shopsCol = collection(db, 'shops');
+    console.log("shopsCol")
+    console.log(shopsCol)
+    const shopsSnapshot = await getDocs(shopsCol);
+    console.log("shopsSnapshot")
+    const shopItemsList = shopsSnapshot.docs.map(doc => doc.data());
+    var shopItemName = document.getElementById('shopItems');
+    if (shopItemName != null) {
+        for(let i = 0; i < shopItemsList.length; i++) {
+            shopItemName.innerHTML += shopItemsList[i]["name"] + ": " + shopItemsList[i]["price"] + "<br>";
+        }
     }
 }
 
