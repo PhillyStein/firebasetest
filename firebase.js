@@ -20,7 +20,9 @@ const auth = getAuth();
 
 async function getShopItems(db) {
     const foodShopDoc = doc(db, "shops", "food_shop");
+    console.log(foodShopDoc);
     const foodShopSnap = await getDoc(foodShopDoc);
+    console.log(foodShopSnap);
     var shopItemName = document.getElementById('shopItems');
     if (shopItemName != null && foodShopSnap.exists()) {
         for(let i = 0; i < foodShopSnap.length; i++) {
