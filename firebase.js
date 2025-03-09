@@ -19,8 +19,6 @@ const db = getFirestore(app);
 const auth = getAuth();
 
 async function getShopItems(db) {
-    console.log(auth);
-    console.log(user);
     // this gets the "food_shop" document from firestore
     const foodShopDoc = doc(db, "shops", "food_shop");
     const foodShopSnap = await getDoc(foodShopDoc);
@@ -95,7 +93,6 @@ if (logOutButton != null) {
 
 var debugButton = document.getElementById("debugButton");
 if (debugButton != null) {
-    // Logs the user out and redirects them to the 'index' page.
     debugButton.onclick = function() {
         console.log(user);
         console.log(auth);
