@@ -48,9 +48,9 @@ if (signInButton != null) {
             // Signs in the user and redirects them to the 'home' page.
             var result = signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
                 const user = userCredential.user;
-                console.log(auth)
-                console.log(user)
                 window.location.href = "home.html";
+                console.log(auth);
+                console.log(user);
             }).catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
