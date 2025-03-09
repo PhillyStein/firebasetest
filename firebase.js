@@ -81,7 +81,7 @@ if (signUpButton != null) {
 }
 
 async function createUser(userId) {
-    const newUser = await addDoc(collection(db, "pet_users", userId), {
+    const newUser = await setDoc(doc(db, "pet_users", userId), {
         name: "",
         pet_type: "",
         pet_name: "",
