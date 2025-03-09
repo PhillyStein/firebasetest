@@ -19,6 +19,8 @@ const db = getFirestore(app);
 const auth = getAuth();
 
 async function getShopItems(db) {
+    console.log(auth);
+    console.log(user);
     // this gets the "food_shop" document from firestore
     const foodShopDoc = doc(db, "shops", "food_shop");
     const foodShopSnap = await getDoc(foodShopDoc);
@@ -29,7 +31,6 @@ async function getShopItems(db) {
         var foodShop = foodShopSnap.data();
         // this gets all the keys in the "food_shop" map (name, price, etc...)
         var foodShopKeys = Object.keys(foodShop);
-        console.log(foodShop);
         // this iterates through the items in "food_shop" and displays them on the page
         for(let i = 0; i < foodShopKeys.length; i++) {
             let key = foodShopKeys[i]
@@ -78,7 +79,6 @@ if (signUpButton != null) {
             });
         }
     }
-
 }
 
 var logOutButton = document.getElementById("logOutButton");
@@ -90,6 +90,15 @@ if (logOutButton != null) {
         }).catch((error) => {
             console.error("Error signing out: ", error);
         });
+    }
+}
+
+var debugButton = document.getElementById("debugButton");
+if (debugButton != null) {
+    // Logs the user out and redirects them to the 'index' page.
+    debugButton.onclick = function() {
+        console.log(user);
+        console.log(auth);
     }
 }
 
