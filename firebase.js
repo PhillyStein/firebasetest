@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-app.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore.js";
-import { collection, doc, getDoc, getDocs, addDoc, Timestamp } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore.js";
+import { collection, doc, setDoc, getDoc, getDocs, addDoc, Timestamp } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore.js";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-auth.js";
 
 const firebaseConfig = {
@@ -80,13 +80,12 @@ if (signUpButton != null) {
 
 }
 
-function createUser(userId) {
-    collection("pet_users").add({
-        "id": userId,
-        "name": "",
-        "pet_type": "",
-        "pet_name": "",
-        "money": 100,
+async function createUser(userId) {
+    await setDoc(doc(db, "pet_users", userId), {
+        name: "",
+        pet_type: "",
+        pet_name: "",
+        money: 100,
     });
 }
 
