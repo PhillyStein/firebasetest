@@ -68,7 +68,7 @@ if (signUpButton != null) {
             // Signs up the user and redirects them to the 'home' page. Probably change this to a welcome page or something.
             var result = createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
                 const user = userCredential.user;
-                createUser();
+                createUser(user.uid);
                 window.location.href = "home.html";
             }).catch((error) => {
                 const errorCode = error.code;
@@ -80,10 +80,8 @@ if (signUpButton != null) {
 
 }
 
-async function createUser() {
-    let user = auth.currentUser;
-    let uid = user.uid;
-    await setDoc(doc(db, "pet_users", uid), {
+async function createUser(userId) {
+    await setDoc(doc(db, "pet_users", userId), {
         name: "",
         pet_type: "",
         pet_name: "",
