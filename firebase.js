@@ -26,7 +26,7 @@ async function getShopItems(db) {
     var shopItems = document.getElementById('shopItems');
     if (shopItems != null && foodShopSnap.exists()) {
         var foodShop = foodShopSnap.data();
-        var foodShopKeys = Object.keys(foodShopKeys);
+        var foodShopKeys = Object.keys(foodShop);
         console.log(foodShop);
         for(let i = 0; i < foodShopKeys.length; i++) {
             let key = foodShopKeys[i]
