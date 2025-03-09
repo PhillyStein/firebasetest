@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-app.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore.js";
-import { collection, getDocs, addDoc, Timestamp } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore.js";
+import { collection, doc, getDoc, getDocs, addDoc, Timestamp } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore.js";
 import { query, orderBy, limit, where, onSnapshot } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore.js";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-auth.js";
 
@@ -19,17 +19,12 @@ const db = getFirestore(app);
 const auth = getAuth();
 
 async function getShopItems(db) {
-    console.log("1")
-    const shopsCol = collection(db, 'shops');
-    console.log("shopsCol")
-    console.log(shopsCol)
-    const shopsSnapshot = await getDocs(shopsCol);
-    console.log("shopsSnapshot")
-    const shopItemsList = shopsSnapshot.docs.map(doc => doc.data());
+    const foodShopDoc = doc(db, "shops", "food_shop");
+    const foodShopSnap = await getDoc(foodShopDoc);
     var shopItemName = document.getElementById('shopItems');
-    if (shopItemName != null) {
+    if (shopItemName != null && foodShopSnap.exists()) {
         for(let i = 0; i < shopItemsList.length; i++) {
-            shopItemName.innerHTML += shopItemsList[i]["name"] + ": " + shopItemsList[i]["price"] + "<br>";
+            shopItemName.innerHTML += foodShopSnap[i]["name"] + ": " + foodShopSnap[i]["price"] + "<br>";
         }
     }
 }
