@@ -23,7 +23,7 @@ async function getShopItems(db) {
     const foodShopSnap = await getDoc(foodShopDoc);
     var shopItemName = document.getElementById('shopItems');
     if (shopItemName != null && foodShopSnap.exists()) {
-        for(let i = 0; i < shopItemsList.length; i++) {
+        for(let i = 0; i < foodShopSnap.length; i++) {
             shopItemName.innerHTML += foodShopSnap[i]["name"] + ": " + foodShopSnap[i]["price"] + "<br>";
         }
     }
