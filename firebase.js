@@ -26,9 +26,11 @@ async function getShopItems(db) {
     var shopItems = document.getElementById('shopItems');
     if (shopItems != null && foodShopSnap.exists()) {
         var foodShop = foodShopSnap.data();
+        var foodShopKeys = Object.keys(foodShopKeys);
         console.log(foodShop);
-        for(let i = 0; i < foodShop.length; i++) {
-            shopItems.innerHTML += foodShop[i]["name"] + ": " + foodShop[i]["price"] + "<br>";
+        for(let i = 0; i < foodShopKeys.length; i++) {
+            let key = foodShopKeys[i]
+            shopItems.innerHTML += foodShop[key]["name"] + ": " + foodShop[key]["price"] + "<br>";
         }
     }
 }
