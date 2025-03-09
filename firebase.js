@@ -29,6 +29,7 @@ async function getShopItems(db) {
         var foodShop = foodShopSnap.data();
         // this gets all the keys in the "food_shop" map (name, price, etc...)
         var foodShopKeys = Object.keys(foodShop);
+        console.log(foodShop);
         // this iterates through the items in "food_shop" and displays them on the page
         for(let i = 0; i < foodShopKeys.length; i++) {
             let key = foodShopKeys[i]
@@ -48,8 +49,6 @@ if (signInButton != null) {
             var result = signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
                 const user = userCredential.user;
                 window.location.href = "home.html";
-                console.log(auth);
-                console.log(user);
             }).catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
@@ -69,6 +68,7 @@ if (signUpButton != null) {
             // Signs up the user and redirects them to the 'home' page. Probably change this to a welcome page or something.
             var result = createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
                 const user = userCredential.user;
+                createUser(user.uid);
                 window.location.href = "home.html";
             }).catch((error) => {
                 const errorCode = error.code;
@@ -77,6 +77,17 @@ if (signUpButton != null) {
             });
         }
     }
+
+}
+
+function createUser(userId) {
+    collection("pet_users").add({
+        "id": userId,
+        "name": "",
+        "pet_type": "",
+        "pet_name": "",
+        "money": 100,
+    });
 }
 
 var logOutButton = document.getElementById("logOutButton");
@@ -88,14 +99,6 @@ if (logOutButton != null) {
         }).catch((error) => {
             console.error("Error signing out: ", error);
         });
-    }
-}
-
-var debugButton = document.getElementById("debugButton");
-if (debugButton != null) {
-    debugButton.onclick = function() {
-        console.log(user);
-        console.log(auth);
     }
 }
 
