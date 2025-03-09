@@ -81,6 +81,7 @@ if (signUpButton != null) {
 }
 
 async function createUser(userId) {
+    alert(userId);
     await setDoc(doc(db, "pet_users", userId), {
         name: "",
         pet_type: "",
