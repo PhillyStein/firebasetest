@@ -89,4 +89,4 @@ auth.onAuthStateChanged(function(user)
         }
     })
 
-//getBirds(db)
+getShopItems(db)
