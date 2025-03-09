@@ -23,11 +23,12 @@ async function getShopItems(db) {
     console.log(foodShopDoc);
     const foodShopSnap = await getDoc(foodShopDoc);
     console.log(foodShopSnap);
-    var shopItemName = document.getElementById('shopItems');
-    if (shopItemName != null && foodShopSnap.exists()) {
+    var shopItems = document.getElementById('shopItems');
+    if (shopItems != null && foodShopSnap.exists()) {
         var foodShop = foodShopSnap.data();
+        console.log(foodShop);
         for(let i = 0; i < foodShop.length; i++) {
-            shopItemName.innerHTML += foodShop[i]["name"] + ": " + foodShop[i]["price"] + "<br>";
+            shopItems.innerHTML += foodShop[i]["name"] + ": " + foodShop[i]["price"] + "<br>";
         }
     }
 }
